@@ -22,16 +22,19 @@ const FormSchema = z.object({
   status: z.enum(["pending", "completed"], {
     invalid_type_error: "Please select a task status status.",
   }),
-  date: z.string(),
+  date_created: z.string(),
+  due_date: z.string(),
 });
 
-const CreateTask = FormSchema.omit({ id: true, date: true });
+const CreateTask = FormSchema.omit({ id: true });
 
 export type State = {
   errors?: {
     title?: string[];
     description?: string[];
     status?: string[];
+    date_created?: string[];
+    due_date?: string[];
   };
   message?: string | null;
 };
@@ -41,6 +44,8 @@ export async function createTask(prevState: State, formData: FormData) {
     title: formData.get("title"),
     description: formData.get("description"),
     status: formData.get("status"),
+    date_created: formData.get("date_created"),
+    due_date: formData.get("due_date"),
   });
 
   // If form validation fails, return errors early. Otherwise, continue.
@@ -52,15 +57,17 @@ export async function createTask(prevState: State, formData: FormData) {
   }
 
   // Prepare data for insertion into the database
-  const { title, description, status } = validatedFields.data;
+  const { title, description, status, date_created, due_date } =
+    validatedFields.data;
   //   const amountInCents = amount * 100;
   const date = new Date().toISOString().split("T")[0];
+  //   const due_date = new Date().toISOString().split("T")[0];
 
   // Insert data into the database
   try {
     await sql`
-            INSERT INTO tasks (id, title, description, status, date)
-            VALUES (${title}, ${description}, ${status}, ${date})  
+            INSERT INTO tasks (title, description, status, created_date, due_date)
+            VALUES (${title}, ${description}, ${status}, ${date}, ${date})  
         `;
   } catch (error) {
     return {
@@ -98,7 +105,7 @@ export async function updateTask(
   try {
     await sql`
     UPDATE invoices
-    SET title = ${title}, description = ${description}, status = ${status}
+    SET task_id= ${id}, title = ${title}, description = ${description}, status = ${status}
     WHERE id = ${id}
   `;
   } catch (error) {

@@ -1,5 +1,5 @@
 export type Task = {
-    id: string;
+    task_id: string;
     title: string;
     description : string;
     date_created: string;
@@ -10,7 +10,7 @@ export type Task = {
   };
 
 export type PendingTask = {
-    id: string;
+    task_id: string;
     title: string;
     date_created : string;
     due_date: string;
@@ -18,7 +18,7 @@ export type PendingTask = {
 }
 
 export type TasksTable = {
-    id: string;
+    task_id: string;
     title: string;
     description: string;
     date_created: string;
@@ -27,7 +27,7 @@ export type TasksTable = {
 }
 
 export type TasksTableType = {
-    id: string;
+    task_id: string;
     title: string;
     description: string;
     date_created: string;
@@ -36,7 +36,7 @@ export type TasksTableType = {
 }
 
 export type TaskForm = {
-    id: string;
+    task_id: string;
     title: string;
     description: string;
     date_created: string;
