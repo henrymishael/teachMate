@@ -9,7 +9,7 @@ import {
 import { ArrowRightIcon } from "@heroicons/react/20/solid";
 import { Button } from "./button";
 import { useFormState, useFormStatus } from "react-dom";
-// import { authenticate } from "@/app/lib/actions";
+import { authenticate } from "@/app/lib/action";
 import { IoEyeOutline, IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
 
@@ -18,9 +18,9 @@ export default function LoginForm() {
   const handlePasswordVisibility = () => {
     setViewPassword((prevState) => !prevState);
   };
-  //   const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
   return (
-    <form className='space-y-3'>
+    <form action={dispatch} className='space-y-3'>
       <div className='flex-1 rounded-lg bg-gray-50 px-6 pb-4 pt-8'>
         <h1 className={`${lusitana.className} mb-3 text-2xl `}>
           Please log in to continue.
@@ -78,12 +78,12 @@ export default function LoginForm() {
           aria-live='polite'
           aria-atomic='true'
         >
-          {/* {errorMessage && (
+          {errorMessage && (
             <>
               <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
               <p className='text-sm text-red-500'>{errorMessage}</p>
             </>
-          )} */}
+          )}
         </div>
         <div className='flex h-8 items-end space-x-1'>
           {/* Add form errors here */}

@@ -8,7 +8,7 @@ export default function TeachMateLogo() {
       className={`${lusitana.className} flex flex-row items-center leading-none text-white`}
     >
       {/* <Image src={logo} alt='Teach Mate Logo' height={80} /> */}
-      <p className='text-[44px]'>TeachMateAI</p>
+      <p className='text-[32px]'>TeachMateAI</p>
     </div>
   );
 }

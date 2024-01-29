@@ -53,7 +53,6 @@ async function seedTasks(client) {
     title VARCHAR(600) NOT NULL,
     description VARCHAR(2000) NOT NULL,
     status VARCHAR(300) NOT NULL,
-    created_date DATE NOT NULL,
     due_date DATE NOT NULL
   );
 `;
@@ -64,8 +63,8 @@ async function seedTasks(client) {
     const insertedTasks = await Promise.all(
       tasks.map(
         (task) => client.sql`
-        INSERT INTO tasks (task_id, title, description, status, created_date, due_date)
-        VALUES (${task.task_id}, ${task.title}, ${task.description}, ${task.status}, ${task.created_date}, ${task.due_date})
+        INSERT INTO tasks (task_id, title, description, status, due_date)
+        VALUES (${task.task_id}, ${task.title}, ${task.description}, ${task.status}, ${task.due_date})
         ON CONFLICT (id) DO NOTHING;
       `
       )
