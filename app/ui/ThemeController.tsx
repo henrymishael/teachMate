@@ -4,10 +4,16 @@ import React, { useContext, useEffect, useState } from "react";
 
 // import { ThemeContext } from "./theme-context";
 
+const getInitialTheme = () => {
+  if (typeof window !== "undefined" && window.localStorage) {
+    // Check if localStorage is available
+    return localStorage.getItem("theme") || "light";
+  }
+  return "light";
+};
+
 function ThemeController() {
-  const [theme, setTheme] = useState<string>(
-    (localStorage.getItem("theme") as string) || "light"
-  );
+  const [theme, setTheme] = useState<string>(getInitialTheme);
 
   const handleToggle = (e: any) => {
     if (e.target.checked) {
