@@ -11,10 +11,10 @@ export default async function LatestTasks() {
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Latest Tasks
       </h2>
-      <div className='flex grow flex-col justify-between rounded-xl bg-gray-50 p-4'>
+      <div className='flex grow flex-col justify-between rounded-xl bg-primary p-4'>
         {/* NOTE: comment in this code when you get to this point in the course */}
 
-        <div className='bg-white px-6'>
+        <div className='background-color px-6'>
           {pendingTasks.map((task, i) => {
             // Assuming task.due_date is expected to be a string or undefined
             const dueDate = formatDateToLocal(task.due_date);
@@ -38,7 +38,7 @@ export default async function LatestTasks() {
                     height={32}
                   /> */}
                   <div className='min-w-0'>
-                    <p className='truncate text-sm font-semibold md:text-base'>
+                    <p className='truncate text-sm font-semibold md:text-base text-color'>
                       {task.title}
                     </p>
                     <p className='hidden text-sm text-gray-500 sm:block'>

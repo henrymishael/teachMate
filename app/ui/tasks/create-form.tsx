@@ -4,6 +4,7 @@ import { useFormState } from "react-dom";
 // import { CustomerField } from "@/app/lib/definition";
 import Link from "next/link";
 import {
+  CalendarDaysIcon,
   CheckIcon,
   ClockIcon,
   CurrencyDollarIcon,
@@ -19,7 +20,7 @@ export default function Form() {
 
   return (
     <form action={dispatch}>
-      <div className='rounded-md bg-gray-50 p-4 md:p-6'>
+      <div className='rounded-md bg-primary p-4 md:p-6'>
         {/* Customer Name */}
         <div className='mb-4'>
           <label htmlFor='title' className='mb-2 block text-sm font-medium'>
@@ -29,10 +30,10 @@ export default function Form() {
             <input
               id='title'
               placeholder='Enter a title'
-              className='peer block w-full cursor-text rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+              className='peer block w-full cursor-text rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 bg-accent'
               aria-describedby='customer-error'
             ></input>
-            <PencilIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500' />
+            <PencilIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 peer-focus:text-color ' />
           </div>
           {/* <div id='customer-error' aria-live='polite' aria-atomic='true'>
             {state.errors?.title &&
@@ -59,10 +60,10 @@ export default function Form() {
                 name='description'
                 type='text'
                 placeholder='Enter a description'
-                className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 cursor-text'
+                className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500 cursor-text bg-accent'
                 aria-describedby='amount-error'
               />
-              <PencilIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+              <PencilIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2  ' />
             </div>
             <div id='amount-error' aria-live='polite' aria-atomic='true'>
               {state.errors?.description &&
@@ -82,14 +83,15 @@ export default function Form() {
           </label>
 
           <div className='relative mt-2 rounded-md'>
-            <div className='relative'>
+            <div className='relative '>
               <input
                 id='end'
                 name='end'
                 type='date'
-                className='peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                className='peer block w-full rounded-md border border-gray-200 py-2 pl-10  pr-2 text-sm outline-2 placeholder:text-gray-500 bg-accent'
                 aria-describedby='amount-error'
               />
+              <CalendarDaysIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2   ' />
             </div>
           </div>
         </div>
@@ -99,7 +101,7 @@ export default function Form() {
           <legend className='mb-2 block text-sm font-medium'>
             Set the task status
           </legend>
-          <div className='rounded-md border border-gray-200 bg-white px-[14px] py-3'>
+          <div className='rounded-md border border-gray-200 bg-accent px-[14px] py-3'>
             <div className='flex gap-4'>
               <div className='flex items-center'>
                 <input

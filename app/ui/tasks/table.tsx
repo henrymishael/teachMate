@@ -16,12 +16,12 @@ export default async function InvoicesTable({
   return (
     <div className='mt-6 flow-root'>
       <div className='inline-block min-w-full align-middle'>
-        <div className='rounded-lg bg-gray-50 p-2 md:pt-0'>
+        <div className='rounded-lg bg-primary p-2 md:pt-0'>
           <div className='md:hidden'>
             {tasks?.map((task) => (
               <div
                 key={task.task_id}
-                className='mb-2 w-full rounded-md bg-white p-4'
+                className='mb-2 w-full rounded-md bg-accent p-4'
               >
                 <div className='flex items-center justify-between border-b pb-4'>
                   <div>
