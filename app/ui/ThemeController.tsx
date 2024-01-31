@@ -1,15 +1,12 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import { string } from "zod";
+
 // import { ThemeContext } from "./theme-context";
 
-interface Props {
-  theme: string;
-}
 function ThemeController() {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+  const [theme, setTheme] = useState<string>(
+    (localStorage.getItem("theme") as string) || "light"
   );
 
   const handleToggle = (e: any) => {
